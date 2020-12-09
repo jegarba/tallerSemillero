@@ -6,10 +6,13 @@ public class TestPropiedades {
 
 	public static void main(String[] args) {
 
-		String valor = new ConexionBDD().leerPropiedad("propiedad1");
+		String valor = ConexionBDD.leerPropiedad("usuario");
 		System.out.println(valor);
 
-		valor = new ConexionBDD().leerPropiedad("XX");
+		valor = ConexionBDD.leerPropiedad("password");
+		System.out.println(valor);
+		
+		valor = ConexionBDD.leerPropiedad("urlConexion");
 		System.out.println(valor);
 	}
 }

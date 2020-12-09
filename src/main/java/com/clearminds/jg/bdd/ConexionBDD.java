@@ -1,5 +1,6 @@
 package com.clearminds.jg.bdd;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,12 +15,13 @@ public class ConexionBDD {
 
 	public static String leerPropiedad(String propiedad) {
 
+		File f=new File("conexion.properties");
+		System.out.println("ruta:"+f.getAbsoluteFile());
 		Properties p = new Properties();
 
 		try {
-			p.load(new FileReader("conexion.properties"));
-
-			// System.out.println(p.getProperty(propiedad));
+			p.load(new FileReader(f.getAbsoluteFile()));
+			System.out.println(p.getProperty(propiedad));
 			return p.getProperty(propiedad);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -32,14 +34,12 @@ public class ConexionBDD {
 	}
 
 	public static Connection obtenerConexion() throws BDDException {
-		Connection conn = null;
-
 		String username = leerPropiedad("usuario");
 		String password = leerPropiedad("password");
 		String url = leerPropiedad("urlConexion");
 
 		try {
-			return conn = DriverManager.getConnection(url, username, password);
+			return DriverManager.getConnection(url, username, password);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
