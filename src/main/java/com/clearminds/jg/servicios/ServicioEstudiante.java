@@ -42,7 +42,7 @@ public class ServicioEstudiante extends ServicioBase {
 
 			stmt = getConexion().createStatement();
 
-			String sql = "UPDATE estudiantes SET nombre= '"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"' , apellido='"+estudiante.getEdad()+"' where id=2";
+			String sql = "UPDATE estudiantes SET nombre= '"+estudiante.getNombre()+"', apellido='"+estudiante.getApellido()+"' , edad='"+estudiante.getEdad()+"' where id=2";
 			System.out.println("Scrip: " + sql);
 
 			stmt.executeUpdate(sql);
